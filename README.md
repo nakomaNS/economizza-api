@@ -21,18 +21,6 @@ O sistema mantém a consistência entre saldo disponível e valores alocados em 
 
 ---
 
-
-## Decisões de Arquitetura
-
-### Adoção de Java Records
-O projeto utiliza **Java Records** para todas as classes de transferência de dados (DTOs). Isso garante **imutabilidade** no tráfego de informações, reduz a verbosidade do código e evita efeitos colaterais indesejados durante o processamento das requisições, tornando o fluxo de dados mais previsível e seguro.
-
-### Estratégia de Precisão Financeira
-Foi adotado estritamente o uso de `BigDecimal` para representar valores monetários, rejeitando tipos primitivos de ponto flutuante (`double`/`float`). Essa decisão arquitetural previne erros de arredondamento IEEE 754, garantindo a precisão decimal necessária para sistemas contábeis e conformidade com operações aritméticas sensíveis.
-
-### Rastreabilidade
-Nenhuma alteração de saldo (`Wallet`) ocorre sem a persistência simultânea de um registro imutável na tabela `Transactions`. Isso garante auditabilidade completa do sistema, permitindo reconstruir o histórico financeiro e identificar a origem de cada centavo movimentado.
-
 ## Estrutura do Projeto
 
 ```text
